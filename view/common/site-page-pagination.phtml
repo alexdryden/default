@@ -11,19 +11,17 @@ $nextText = $translate('Next: ');
     <div class="site-page-pagination">
 
         <div class="prev-page">
-            <? if ($prevPage){
+            <?php if ($prevPage){
                 $prevTitle = $prevPage->title();
                 echo $this->hyperlink($prevText . $prevTitle, $prevPage->siteUrl());
             }?>
         </div>
 
         <div class="next-page">
-        <?php  if ($nextPage){
-            $nextTitle = $nextPage->title();
-            echo $this->hyperlink($nextText . $nextTitle, $nextPage->siteUrl());
-        }
-
-        ?>
+            <?php  if ($nextPage){
+                $nextTitle = $nextPage->title();
+                echo $this->hyperlink($nextText . $nextTitle, $nextPage->siteUrl());
+            }?>
         </div>
     </div>
 <?php endif; ?>
