@@ -4,6 +4,17 @@ $translate = $this->plugin('translate');
 $prevText = $translate('Prev');
 $nextText = $translate('Next');
 ?>
+
+<?php
+if ($prevPage){
+    $prevTitle = $prevPage->title();
+}
+
+if ($nextPage){
+    $nextTitle = $nextPage->title();
+}
+?>
+
 <?php if ($prevPage || $nextPage): ?>
     <div class="site-page-pagination">
         <?php echo $prevPage ? $this->hyperlink($prevText, $prevPage->siteUrl()) : ''; ?>
