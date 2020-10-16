@@ -1,6 +1,26 @@
+<div class="row">
 <?php
 $layouts = [];
-foreach ($page->blocks() as $block) {
+$blocks = $page->blocks();
+console_log($blocks);
+
+$toc_block = array_filter($blocks, function($var) { return $var->layout() =='tableOfContents'; });
+console_log($toc_block);
+if(count($toc_block)) :  // if there is a table of contents block ?>
+	<div class="col-md-3">
+		<?php 
+		$toc_block = array_values($toc_block);
+		$this->blockLayout()->prepareRender($toc_block[0]->layout()); 
+		echo $this->blockLayout()->render($toc_block[0]);
+		?>
+	</div>
+	<div class="col-md-9">
+<?php else: ?>
+	
+<?php endif; ?>
+<?php
+
+foreach ($blocks as $block) {
     if (!array_key_exists($block->layout(), $layouts)) {
         // Prepare render only once per layout type.
         $layouts[$block->layout()] = null;
@@ -10,5 +30,18 @@ foreach ($page->blocks() as $block) {
 	<?php
     echo $this->blockLayout()->render($block); ?>
 	</div>
+
 <?php
 }
+?>
+</div>
+<?php
+function console_log($output, $with_script_tags = true) {
+    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . 
+');';
+    if ($with_script_tags) {
+        $js_code = '<script>' . $js_code . '</script>';
+    }
+    echo $js_code;
+}
+?>
