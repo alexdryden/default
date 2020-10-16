@@ -2,10 +2,7 @@
 <?php
 $layouts = [];
 $blocks = $page->blocks();
-console_log($blocks);
-
 $toc_block = array_filter($blocks, function($var) { return $var->layout() =='tableOfContents'; });
-console_log($toc_block);
 if(count($toc_block)) :  // if there is a table of contents block ?>
 	<div class="col-md-3">
 		<?php 
@@ -19,7 +16,6 @@ if(count($toc_block)) :  // if there is a table of contents block ?>
 	<div class="col-sm-12">
 <?php endif; ?>
 <?php
-
 foreach ($blocks as $block) {
 	if(strcmp ($block->layout(), "tableOfContents")) { // if not table of contents block
 		if (!array_key_exists($block->layout(), $layouts)) {
@@ -36,13 +32,3 @@ foreach ($blocks as $block) {
 }
 ?>
 </div>
-<?php
-function console_log($output, $with_script_tags = true) {
-    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . 
-');';
-    if ($with_script_tags) {
-        $js_code = '<script>' . $js_code . '</script>';
-    }
-    echo $js_code;
-}
-?>
