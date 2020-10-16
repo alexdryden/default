@@ -21,17 +21,18 @@ if(count($toc_block)) :  // if there is a table of contents block ?>
 <?php
 
 foreach ($blocks as $block) {
-    if (!array_key_exists($block->layout(), $layouts)) {
-        // Prepare render only once per layout type.
-        $layouts[$block->layout()] = null;
-        $this->blockLayout()->prepareRender($block->layout());
-    } ?>
-	<div class="block <?php echo $block->layout();?>-block">
-	<?php
-    echo $this->blockLayout()->render($block); ?>
-	</div>
-
+	if(strcmp ($block->layout(), "tableOfContents")) { // if not table of contents block
+		if (!array_key_exists($block->layout(), $layouts)) {
+			// Prepare render only once per layout type.
+			$layouts[$block->layout()] = null;
+			$this->blockLayout()->prepareRender($block->layout());
+		} ?>
+		<div class="block <?php echo $block->layout();?>-block">
+		<?php
+		echo $this->blockLayout()->render($block); ?>
+		</div>
 <?php
+	}
 }
 ?>
 </div>
