@@ -3,6 +3,23 @@
 $translate = $this->plugin('translate');
 $prevText = $translate('Prev: ');
 $nextText = $translate('Next: ');
+$default_thumb = $this->assetUrl('img/BlockI-Logo-Full-Color-RGB.png');
+function getThumbnail($page, $default){
+    //default thumbnail if the page has no media
+    $thumb = $default;
+
+    //get the first media attachment on the target page
+    foreach($page->blocks() as $block){
+        if (get_class($block) === 'Omeka\Api\Representation\SitePageBlockRepresentation'){
+            if ($block->attachments()){
+
+                $thumb = $block->attachments()[0]->media()->thumbnailUrl("square");
+                break ;
+            }
+        }
+    }
+    return $thumb;
+}
 ?>
 
 
