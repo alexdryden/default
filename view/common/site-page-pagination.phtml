@@ -41,7 +41,7 @@ function getThumbnail($page, $default){
                 $nextTitle = $nextPage->title();
                 $nextPageThumb = getThumbnail($nextPage, $default_thumb);
                 echo $this->hyperlink($nextText . $nextTitle, $nextPage->siteUrl());
-                echo '<img src="' . $prevPageThumb . '">';
+                echo '<img src="' . $nextPageThumb . '">';
             }?>
         </div>
     </div>
