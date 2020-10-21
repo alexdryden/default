@@ -1,4 +1,3 @@
-
 <?php
 $translate = $this->plugin('translate');
 $prevText = $translate('Prev: ');
@@ -6,19 +5,22 @@ $nextText = $translate('Next: ');
 $default_thumb = $this->assetUrl('img/BlockI-Logo-Full-Color-RGB.png');
 function getThumbnail($page, $default){
     //default thumbnail if the page has no media
-    $thumb = $default;
+    $url = $default;
+    $alt = 'Default image for next page when no specific media was found for the page';
 
     //get the first media attachment on the target page
     foreach($page->blocks() as $block){
         if (get_class($block) === 'Omeka\Api\Representation\SitePageBlockRepresentation'){
             if ($block->attachments()){
+                $url = $block->attachments()[0]->media()->thumbnailUrl("square");
 
-                $thumb = $block->attachments()[0]->media()->thumbnailUrl("square");
-                break ;
+                //TODO what should we put if they haven't actually added alt text?
+                $alt = $block->attachments()[0]->media()->primaryMedia()->jsonSerialize()['o-module-alt-text:alt-text'];
+                break;
             }
         }
     }
-    return $thumb;
+    return ['url' => $url, 'alt' => $alt];
 }
 ?>
 
