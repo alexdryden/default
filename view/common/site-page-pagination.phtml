@@ -34,7 +34,7 @@ function getThumbnail($page, $default){
                 $prevTitle = $prevPage->title();
                 $prevPageThumb = getThumbnail($prevPage, $default_thumb);
                 echo $this->hyperlink($prevText . $prevTitle, $prevPage->siteUrl());
-                echo '<img src="' . $prevPageThumb . '">';
+                echo '<img src="' . $prevPageThumb['url'] . '" alt="'. $prevPageThumb['alt'].'">';
             }?>
         </div>
 
@@ -43,7 +43,7 @@ function getThumbnail($page, $default){
                 $nextTitle = $nextPage->title();
                 $nextPageThumb = getThumbnail($nextPage, $default_thumb);
                 echo $this->hyperlink($nextText . $nextTitle, $nextPage->siteUrl());
-                echo '<img src="' . $prevPageThumb . '">';
+                echo '<img src="' . $nextPageThumb['url'] . '" alt="' .$nextPageThumb['alt'].'">';
             }?>
         </div>
     </div>
