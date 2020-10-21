@@ -28,7 +28,6 @@ if ($activePage):
 <?php 
 $child_pages = $activePage['page']->toArray();
 $pages = $child_pages['pages'];
-console_log($pages);
 $iter = 1; // use iter to determine whether the card is on the left or right
 foreach ($pages as $page) : ?>
 <?php if ($iter % 2): // if card is on the left, make a new row ?>
@@ -58,12 +57,3 @@ endforeach;
 <?php if ($showPagePagination): ?>
 <?php echo $this->sitePagePagination(); ?>
 <?php endif; ?>
-<?php
-function console_log($output, $with_script_tags = true) {
-    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . 
-');';
-    if ($with_script_tags) {
-        $js_code = '<script>' . $js_code . '</script>';
-    }
-    echo $js_code;
-}
