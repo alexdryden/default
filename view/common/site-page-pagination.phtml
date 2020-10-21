@@ -12,10 +12,17 @@ function getThumbnail($page, $default){
     foreach($page->blocks() as $block){
         if (get_class($block) === 'Omeka\Api\Representation\SitePageBlockRepresentation'){
             if ($block->attachments()){
-                $url = $block->attachments()[0]->media()->thumbnailUrl("square");
+                $media = $block->attachments()[0]->media();
+                $url = $media->thumbnailUrl("square");
 
-                //TODO what should we put if they haven't actually added alt text?
-                $alt = $block->attachments()[0]->media()->primaryMedia()->jsonSerialize()['o-module-alt-text:alt-text'];
+                if (array_key_exists('o-module-alt-text:alt-texts', $media->primaryMedia()->jsonSerialize())
+                    && $media->primaryMedia()->jsonSerialize()['o-module-alt-text:alt-texts']
+                ) {
+                    $alt = $media->primaryMedia()->jsonSerialize()['o-module-alt-text:alt-texts'];
+                } else {
+                    $alt = 'Thumbnail preview for next page';
+                }
+
                 break;
             }
         }
