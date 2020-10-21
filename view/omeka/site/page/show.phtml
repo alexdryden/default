@@ -24,13 +24,16 @@ if ($activePage):
 
 <?php if ($activePage): ?>
     <?php if ($this->displayNavigation && $activePage['page']->hasPages()): ?>
-	<div class="row">
+
 <?php 
 $child_pages = $activePage['page']->toArray();
 $pages = $child_pages['pages'];
 console_log($pages);
-
+$iter = 1; // use iter to determine whether the card is on the left or right
 foreach ($pages as $page) : ?>
+<?php if ($iter % 2): // if card is on the left, make a new row ?>
+	<div class="row mt-3">
+<?php endif; ?>
 <div class="col-md-6">
 <a href="<?php echo $page['params']['page-slug']?>">
 <div class="card"><img alt="ALT" class="card-img-top" src="https://via.placeholder.com/575x300" />
@@ -40,10 +43,15 @@ foreach ($pages as $page) : ?>
 </div>
 </a>
 </div>
-<?php
+<?php if (($iter % 2) == 0): // if card is on the right, close row ?>
+	</div>
+<?php endif; 
+$iter++;
 endforeach;
 ?>
-</div>
+<?php if (($iter % 2) == 0): // if last card is on the left, close row ?>
+	</div>
+<?php endif; ?>
     <?php endif; ?>
 <?php endif; ?>
 <?php $this->trigger('view.show.after'); ?>
