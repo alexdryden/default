@@ -9,24 +9,51 @@ $showPagePagination = $this->siteSetting('show_page_pagination', true);
 $nav = $site->publicNav();
 $container = $nav->getContainer();
 $activePage = $nav->findActive($container);
+
 if ($activePage):
-?>
+    ?>
     <?php if ($activePage['depth'] !== 0): ?>
     <nav class="breadcrumbs"><?php echo $nav->breadcrumbs(); ?></nav>
-    <?php endif; ?>
 <?php endif; ?>
-
-<?php if ($activePage): ?>
-    <?php if ($this->displayNavigation && $activePage['page']->hasPages()): ?>
-    <nav class="sub-menu"><?php echo $nav->menu()->renderSubMenu(); ?></nav>
-    <?php endif; ?>
 <?php endif; ?>
 
 <?php $this->trigger('view.show.before'); ?>
 <div class="blocks">
     <?php echo $this->content; ?>
 </div>
+
+<?php if ($activePage): ?>
+    <?php if ($this->displayNavigation && $activePage['page']->hasPages()): ?>
+
+        <?php
+        $child_pages = $activePage['page']->toArray();
+        $pages = $child_pages['pages'];
+        $iter = 1; // use iter to determine whether the card is on the left or right
+        foreach ($pages as $page) : ?>
+            <?php if ($iter % 2): // if card is on the left, make a new row ?>
+                <div class="row mt-3">
+            <?php endif; ?>
+            <div class="col-md-6">
+                <a href="<?php echo $page['params']['page-slug']?>">
+                    <div class="card"><img alt="ALT" class="card-img-top" src="https://via.placeholder.com/575x300" />
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="<?php echo $page['params']['page-slug']?>"><?php echo $page['label']?></a></h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <?php if (($iter % 2) == 0): // if card is on the right, close row ?>
+                </div>
+            <?php endif;
+            $iter++;
+        endforeach;
+        ?>
+        <?php if (($iter % 2) == 0): // if last card is on the left, close row ?>
+            </div>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php endif; ?>
 <?php $this->trigger('view.show.after'); ?>
 <?php if ($showPagePagination): ?>
-<?php echo $this->sitePagePagination(); ?>
+    <?php echo $this->sitePagePagination(); ?>
 <?php endif; ?>
