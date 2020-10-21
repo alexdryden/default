@@ -18,6 +18,13 @@ if ($activePage):
 <?php endif; ?>
 
 <?php $this->trigger('view.show.before'); ?>
+<div class="row">
+    <div class="col-md-3">
+        <?php echo $site->publicNav()->menu()->renderMenu(null, [
+            'maxDepth' => $this->themeSetting('nav_depth') - 1
+        ]);?>
+    </div>
+    <div class="col-md-9">
 <div class="blocks">
     <?php echo $this->content; ?>
 </div>
@@ -57,3 +64,5 @@ if ($activePage):
 <?php if ($showPagePagination): ?>
     <?php echo $this->sitePagePagination(); ?>
 <?php endif; ?>
+</div>
+</div>
