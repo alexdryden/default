@@ -3,6 +3,6 @@
 .sass-cache
 .DS_Store
 /.idea/
-composer.json
+.json
 composer.lock
 .php_cs.cache
