@@ -24,7 +24,8 @@ if ($activePage):
                 'maxDepth' => $this->themeSetting('nav_depth') - 1
             ]);?>
         </div>
-        <div class="col-md-9 main-content-container">
+        <div class="col-md-9">
+            <div class="main-content-container">
             <div class="blocks">
                 <?php echo $this->content; ?>
             </div>
@@ -60,6 +61,7 @@ if ($activePage):
         <?php endif; ?>
         <?php endif; ?>
         <?php endif; ?>
+        </div>
         <?php $this->trigger('view.show.after'); ?>
         <?php if ($showPagePagination): ?>
             <?php echo $this->sitePagePagination(); ?>
