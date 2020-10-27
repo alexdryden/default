@@ -21,7 +21,6 @@ if ($activePage['depth'] !== 0) {
     }
 } else {
     $activeRoot = $activePage['page'];
-
 }
 $activeRoot = $activeRoot->toArray();
 $child_pages = $activeRoot['pages'];
@@ -82,15 +81,6 @@ if ($activePage):
     </div>
     </div>
 <?php
-function console_log($output, $with_script_tags = true)
-{
-    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .
-        ');';
-    if ($with_script_tags) {
-        $js_code = '<script>' . $js_code . '</script>';
-    }
-    echo $js_code;
-}
 function printNav($parentPage) {
     if (count($parentPage) != 0) {
         echo '<ul><li><a href="' . $parentPage['params']['page-slug'] . '">' . $parentPage['label'] . '</a>';
