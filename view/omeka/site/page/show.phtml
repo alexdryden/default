@@ -40,11 +40,9 @@ if ($activePage):
                 </div>
 
                 <?php if ($activePage): ?>
-                <?php if ($this->displayNavigation && $activePage['page']->hasPages()): ?>
+                <?php if ($activePage['depth'] == 0): ?>
 
                 <?php
-                $current_page = $activePage['page']->toArray();
-                $child_pages = $current_page['pages'];
                 $iter = 1; // use iter to determine whether the card is on the left or right
                 foreach ($child_pages as $page) : ?>
                     <?php if ($iter % 2): // if card is on the left, make a new row?>
