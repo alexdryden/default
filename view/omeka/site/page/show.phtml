@@ -10,12 +10,18 @@ $nav = $site->publicNav();
 $container = $nav->getContainer();
 
 $activePage = $nav->findActive($container);
-$allRootPages = $container->getPages();
 
-foreach ($allRootPages as $page) {
-    if ($page->isActive($recursive = true)) {
-        $activeRoot = $page;
+if ($activePage['depth'] !== 0) {
+    $allRootPages = $container->getPages();
+
+    foreach ($allRootPages as $page) {
+        if ($page->isActive($recursive = true)) {
+            $activeRoot = $page;
+        }
     }
+} else {
+    $activeRoot = $activePage['page'];
+
 }
 $activeRoot = $activeRoot->toArray();
 $child_pages = $activeRoot['pages'];
