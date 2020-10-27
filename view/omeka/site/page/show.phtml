@@ -8,8 +8,17 @@ $showPagePagination = $this->siteSetting('show_page_pagination', true);
 <?php
 $nav = $site->publicNav();
 $container = $nav->getContainer();
-$activePage = $nav->findActive($container);
 
+$activePage = $nav->findActive($container);
+$allRootPages = $container->getPages();
+
+foreach ($allRootPages as $page) {
+    if ($page->isActive($recursive = true)) {
+        $activeRoot = $page;
+    }
+}
+$activeRoot = $activeRoot->toArray();
+$child_pages = $activeRoot['pages'];
 if ($activePage):
     ?>
     <?php if ($activePage['depth'] !== 0): ?>
@@ -20,47 +29,47 @@ if ($activePage):
 <?php $this->trigger('view.show.before'); ?>
     <div class="row">
         <div class="col-md-3">
-            <?php echo $site->publicNav()->menu()->renderMenu(null, [
-                'maxDepth' => $this->themeSetting('nav_depth') - 1
-            ]);?>
+            <?php
+                printNav($activeRoot);
+            ?>
         </div>
         <div class="col-md-9">
             <div class="main-content-container">
-            <div class="blocks">
-                <?php echo $this->content; ?>
-            </div>
-
-            <?php if ($activePage): ?>
-            <?php if ($this->displayNavigation && $activePage['page']->hasPages()): ?>
-
-            <?php
-            $current_page = $activePage['page']->toArray();
-            $child_pages = $current_page['pages'];
-            $iter = 1; // use iter to determine whether the card is on the left or right
-            foreach ($child_pages as $page) : ?>
-                <?php if ($iter % 2): // if card is on the left, make a new row?>
-                    <div class="row mt-3">
-                <?php endif; ?>
-                <div class="col-md-6">
-                    <a href="<?php echo $page['params']['page-slug']?>">
-                        <div class="card"><img alt="ALT" class="card-img-top" src="https://via.placeholder.com/575x300" />
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="<?php echo $page['params']['page-slug']?>"><?php echo $page['label']?></a></h5>
-                            </div>
-                        </div>
-                    </a>
+                <div class="blocks">
+                    <?php echo $this->content; ?>
                 </div>
-                <?php if (($iter % 2) == 0): // if card is on the right, close row?>
+
+                <?php if ($activePage): ?>
+                <?php if ($this->displayNavigation && $activePage['page']->hasPages()): ?>
+
+                <?php
+                $current_page = $activePage['page']->toArray();
+                $child_pages = $current_page['pages'];
+                $iter = 1; // use iter to determine whether the card is on the left or right
+                foreach ($child_pages as $page) : ?>
+                    <?php if ($iter % 2): // if card is on the left, make a new row?>
+                        <div class="row mt-3">
+                    <?php endif; ?>
+                    <div class="col-md-6">
+                        <a href="<?php echo $page['params']['page-slug']?>">
+                            <div class="card"><img alt="ALT" class="card-img-top" src="https://via.placeholder.com/575x300" />
+                                <div class="card-body">
+                                    <h5 class="card-title"><a href="<?php echo $page['params']['page-slug']?>"><?php echo $page['label']?></a></h5>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                <?php endif;
-                $iter++;
-            endforeach;
-            ?>
-            <?php if (($iter % 2) == 0): // if last card is on the left, close row?>
-        </div>
-        <?php endif; ?>
-        <?php endif; ?>
-        <?php endif; ?>
+                    <?php if (($iter % 2) == 0): // if card is on the right, close row?>
+                        </div>
+                    <?php endif;
+                    $iter++;
+                endforeach;
+                ?>
+                <?php if (($iter % 2) == 0): // if last card is on the left, close row?>
+            </div>
+            <?php endif; ?>
+            <?php endif; ?>
+            <?php endif; ?>
         </div>
         <?php $this->trigger('view.show.after'); ?>
         <?php if ($showPagePagination): ?>
@@ -77,4 +86,14 @@ function console_log($output, $with_script_tags = true)
         $js_code = '<script>' . $js_code . '</script>';
     }
     echo $js_code;
+}
+function printNav($parentPage) {
+    if (count($parentPage) != 0) {
+        echo '<ul><li><a href="' . $parentPage['params']['page-slug'] . '">' . $parentPage['label'] . '</a>';
+        $children = $parentPage['pages'];
+        foreach ($children as $child) {
+            printNav($child);
+        }
+        echo '</li></ul>';
+    }
 }
