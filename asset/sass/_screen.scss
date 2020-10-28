@@ -738,6 +738,9 @@ p {
 .nav-card{
     &:hover{
         box-shadow: 0 0 10px 2px #858585;
+        a{
+            color: #ed1616;
+        }
 
     }
 }
