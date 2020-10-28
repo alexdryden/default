@@ -7,6 +7,7 @@ $showPagePagination = $this->siteSetting('show_page_pagination', true);
 <?php
 $nav = $site->publicNav();
 $container = $nav->getContainer();
+
 $activePage = $nav->findActive($container);
 if ($activePage):
     ?>
@@ -56,6 +57,7 @@ if ($activePage):
         <?php endif; ?>
         <?php endif; ?>
         <?php endif; ?>
+
         <?php $this->trigger('view.show.after'); ?>
         <?php if ($showPagePagination): ?>
             <?php echo $this->sitePagePagination(); ?>
@@ -72,3 +74,4 @@ function console_log($output, $with_script_tags = true)
     }
     echo $js_code;
 }
+

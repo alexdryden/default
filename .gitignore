@@ -5,3 +5,8 @@
 .idea/php.xml
 *.xml
 .php_cs.cache
+/.idea/
+.json
+composer.lock
+.php_cs.cache
+
