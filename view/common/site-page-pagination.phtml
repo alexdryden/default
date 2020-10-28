@@ -41,8 +41,8 @@ function getThumbnail($page, $default){
             <?php if ($prevPage){
                 $prevTitle = $prevPage->title();
                 $prevPageThumb = getThumbnail($prevPage, $default_thumb);?>
-
-                <div class="card" >
+                <div class="mr-auto">
+                    <div class="card" >
                     <div class="row">
                         <div class="col-auto">
                             <a  href="<?php echo $prevPage->siteUrl() ?>" class="stretched-link">
@@ -61,10 +61,12 @@ function getThumbnail($page, $default){
                         </div>
                     </div>
                 </div>
+                </div>
             <?php }?>
             <?php if ($nextPage){
                 $nextTitle = $nextPage->title();
                 $nextPageThumb = getThumbnail($nextPage, $default_thumb);?>
+                <div class="ml-auto">
                     <div class="card" >
                         <div class="row">
                             <div class="col-auto">
@@ -84,6 +86,7 @@ function getThumbnail($page, $default){
                             </div>
                         </div>
                     </div>
+                <div>
             <?php }?>
             </div>
         </div>
