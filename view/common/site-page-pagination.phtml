@@ -1,4 +1,3 @@
-
 <?php
 $translate = $this->plugin('translate');
 $prevText = $translate('Prev: ');
@@ -6,19 +5,29 @@ $nextText = $translate('Next: ');
 $default_thumb = $this->assetUrl('img/BlockI-Logo-Full-Color-RGB.png');
 function getThumbnail($page, $default){
     //default thumbnail if the page has no media
-    $thumb = $default;
+    $url = $default;
+    $alt = 'Default image for next page when no specific media was found for the page';
 
     //get the first media attachment on the target page
     foreach($page->blocks() as $block){
         if (get_class($block) === 'Omeka\Api\Representation\SitePageBlockRepresentation'){
             if ($block->attachments()){
+                $media = $block->attachments()[0]->media();
+                $url = $media->thumbnailUrl("square");
 
-                $thumb = $block->attachments()[0]->media()->thumbnailUrl("square");
-                break ;
+                if (array_key_exists('o-module-alt-text:alt-text', $media->primaryMedia()->jsonSerialize())
+                    && $media->primaryMedia()->jsonSerialize()['o-module-alt-text:alt-text']
+                ) {
+                    $alt = $media->primaryMedia()->jsonSerialize()['o-module-alt-text:alt-text'];
+                } else {
+                    $alt = 'Thumbnail preview for next page';
+                }
+
+                break;
             }
         }
     }
-    return $thumb;
+    return ['url' => $url, 'alt' => $alt];
 }
 ?>
 
@@ -32,7 +41,7 @@ function getThumbnail($page, $default){
                 $prevTitle = $prevPage->title();
                 $prevPageThumb = getThumbnail($prevPage, $default_thumb);
                 echo $this->hyperlink($prevText . $prevTitle, $prevPage->siteUrl());
-                echo '<img src="' . $prevPageThumb . '">';
+                echo '<img src="' . $prevPageThumb['url'] . '" alt="'. $prevPageThumb['alt'].'">';
             }?>
         </div>
 
@@ -41,7 +50,7 @@ function getThumbnail($page, $default){
                 $nextTitle = $nextPage->title();
                 $nextPageThumb = getThumbnail($nextPage, $default_thumb);
                 echo $this->hyperlink($nextText . $nextTitle, $nextPage->siteUrl());
-                echo '<img src="' . $nextPageThumb . '">';
+                echo '<img src="' . $nextPageThumb['url'] . '" alt="' .$nextPageThumb['alt'].'">';
             }?>
         </div>
     </div>

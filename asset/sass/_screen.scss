@@ -477,6 +477,7 @@ button.o-icon-search {
 footer {
     @include container;
     padding: 0 gutter() $spacing-l;
+    clear: both;
 }
 
 /* @end */
@@ -715,3 +716,17 @@ a.metadata-browse-link {
 }
 
 /* @end */
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+p {
+    font-size: 18px;
+    line-height: normal;
+}
+
+.main-content-container {
+    background-color: #fff;
+    box-shadow: 0 0 10px 2px #858585;
+    padding: 2rem 2.5rem;
+}
