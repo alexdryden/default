@@ -3,14 +3,13 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/page-blocks.css', 'Omek
 $this->htmlElement('body')->appendAttribute('class', 'page');
 $this->pageTitle($page->title(), 2);
 $showPagePagination = $this->siteSetting('show_page_pagination', true);
+$default_thumb = $this->assetUrl('img/BlockI-Logo-Full-Color-RGB.png');
 ?>
 
 <?php
 $nav = $site->publicNav();
 $container = $nav->getContainer();
-
 $activePage = $nav->findActive($container);
-
 
 if ($activePage['depth'] !== 0) {
     $allRootPages = $container->getPages();
@@ -50,16 +49,21 @@ if ($activePage):
                 <?php if ($activePage['depth'] == 0): ?>
 
                 <?php
+                $children = $activePage['page']->getPages();
                 $iter = 1; // use iter to determine whether the card is on the left or right
-                foreach ($child_pages as $page) : ?>
+                foreach ($children as $child) : ?>
                     <?php if ($iter % 2): // if card is on the left, make a new row?>
                         <div class="row mt-3">
                     <?php endif; ?>
+                    <?php
+                    $childPageObject = $this->api()->read('site_pages', ["site" => $site->id(),"title" => $child->getLabel()])->getContent();
+                    $pageThumb = getThumbnail($childPageObject, $default_thumb);
+                    ?>
                     <div class="col-md-6">
-                        <a href="<?php echo $page['params']['page-slug']?>">
-                            <div class="card"><img alt="ALT" class="card-img-top" src="https://via.placeholder.com/575x300" />
+                        <a href="<?php echo $child->getHref(); ?>">
+                            <div class="card"><img alt="<?php echo $pageThumb['alt'] ?>" class="card-img-top" src="<?php echo $pageThumb['url'] ?>" />
                                 <div class="card-body">
-                                    <h5 class="card-title"><a href="<?php echo $page['params']['page-slug']?>"><?php echo $page['label']?></a></h5>
+                                    <h5 class="card-title"><a href="<?php echo $child->getHref(); ?>"><?php echo $child->getLabel(); ?></a></h5>
                                 </div>
                             </div>
                         </a>
@@ -119,4 +123,11 @@ function printNav($parentPage) {
         echo '</li></ul>';
     }
 }
-
+function console_log($output, $with_script_tags = true) {
+    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .
+        ');';
+    if ($with_script_tags) {
+        $js_code = '<script>' . $js_code . '</script>';
+    }
+    echo $js_code;
+}
