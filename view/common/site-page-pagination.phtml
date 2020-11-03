@@ -3,32 +3,6 @@ $translate = $this->plugin('translate');
 $prevText = $translate('Prev: ');
 $nextText = $translate('Next: ');
 $default_thumb = $this->assetUrl('img/BlockI-Logo-Full-Color-RGB.png');
-function getThumbnail($page, $default){
-    //default thumbnail if the page has no media
-    $url = $default;
-    $alt = 'Default image for next page when no specific media was found for the page';
-
-    //get the first media attachment on the target page
-    foreach($page->blocks() as $block){
-        if (get_class($block) === 'Omeka\Api\Representation\SitePageBlockRepresentation'){
-            if ($block->attachments()){
-                $media = $block->attachments()[0]->media();
-                $url = $media->thumbnailUrl("square");
-
-                if (array_key_exists('o-module-alt-text:alt-text', $media->primaryMedia()->jsonSerialize())
-                    && $media->primaryMedia()->jsonSerialize()['o-module-alt-text:alt-text']
-                ) {
-                    $alt = $media->primaryMedia()->jsonSerialize()['o-module-alt-text:alt-text'];
-                } else {
-                    $alt = 'Thumbnail preview for next page';
-                }
-
-                break;
-            }
-        }
-    }
-    return ['url' => $url, 'alt' => $alt];
-}
 ?>
 
 
