@@ -61,7 +61,10 @@ if ($activePage):
                     $pageThumb = getThumbnail($childPageObject, $default_thumb);
                     ?>
                     <div class="col-md-6">
-                        <div class="card toc-card"><img alt="<?php echo $pageThumb['alt'] ?>" class="card-img-top" src="<?php echo $pageThumb['url'] ?>" />
+                        <div class="card toc-card">
+                            <div class="panel-heading">
+                                <img alt="<?php echo $pageThumb['alt'] ?>" class="card-img-top" src="<?php echo $pageThumb['url'] ?>" />
+                            </div>
                             <div class="card-body">
                                 <h5 class="card-title"><a class="stretched-link" href="<?php echo $child->getHref(); ?>"><?php echo $child->getLabel(); ?></a></h5>
                             </div>
