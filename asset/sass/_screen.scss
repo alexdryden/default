@@ -724,3 +724,26 @@ p {
     font-size: 18px;
     line-height: normal;
 }
+
+.main-content-container {
+    background-color: #fff;
+    box-shadow: 0 0 10px 2px #858585;
+    padding: 2rem 2.5rem;
+}
+
+.site-page-pagination{
+    clear: both;
+    margin-top:2rem;
+}
+
+.nav-card{
+    box-shadow: 0 0 10px 0px #9e9e9e;
+    border-radius: 0;
+    &:hover{
+        box-shadow: 0 0 10px 2px #858585;
+        a{
+            color: #ed1616;
+        }
+
+    }
+}

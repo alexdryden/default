@@ -9,6 +9,7 @@ $default_thumb = $this->assetUrl('img/BlockI-Logo-Full-Color-RGB.png');
 <?php
 $nav = $site->publicNav();
 $container = $nav->getContainer();
+
 $activePage = $nav->findActive($container);
 
 if ($activePage['depth'] !== 0) {
