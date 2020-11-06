@@ -750,6 +750,7 @@ p {
 
 .toc-card{
     border-radius: 0;
+    border: none;
     &:hover{
         box-shadow: 0 0 10px 2px #858585;
         a{
@@ -773,4 +774,5 @@ p {
 
 .card-body {
     background: #E8E9EB;
+    border: 1px solid rgba(0,0,0,.125);
 }
