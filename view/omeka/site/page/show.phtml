@@ -48,7 +48,7 @@ if ($activePage):
 
                 <?php if ($activePage): ?>
                 <?php if ($activePage['depth'] == 0): ?>
-
+                <h2 class="toc-card-header">Exhibit Contents</h2>
                 <?php
                 $children = $activePage['page']->getPages();
                 $iter = 1; // use iter to determine whether the card is on the left or right
