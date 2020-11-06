@@ -54,7 +54,7 @@ if ($activePage):
                 $iter = 1; // use iter to determine whether the card is on the left or right
                 foreach ($children as $child) : ?>
                     <?php if ($iter % 2): // if card is on the left, make a new row?>
-                        <div class="row mt-3">
+                        <div class="row toc-row">
                     <?php endif; ?>
                     <?php
                     $childPageObject = $this->api()->read('site_pages', ["site" => $site->id(),"title" => $child->getLabel()])->getContent();
