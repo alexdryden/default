@@ -655,6 +655,12 @@ body.resource #content > h2:first-of-type + h3 {
         border-bottom: 0;
     }
 }
+.clear_fix{
+    clear: both;
+}
+.media.resource.show{
+    display: inline;
+}
 
 #content .media.resource img {
     vertical-align: top;
