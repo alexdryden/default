@@ -2,7 +2,7 @@
 $translate = $this->plugin('translate');
 $prevText = $translate('Previous Section: ');
 $nextText = $translate('Next Section: ');
-$default_thumb = $this->assetUrl('img/BlockI-Logo-Full-Color-RGB.png');
+$default_thumb = $this->assetUrl('img/Placeholder.png');
 ?>
 
 
@@ -14,7 +14,7 @@ $default_thumb = $this->assetUrl('img/BlockI-Logo-Full-Color-RGB.png');
             <div class="row justify-content-between">
             <?php if ($prevPage){
                 $prevTitle = $prevPage->title();
-                $prevPageThumb = getThumbnail($prevPage, $default_thumb);?>
+                $prevPageThumb = getThumbnail($prevPage, $default_thumb, 'square');?>
                 <div class="mr-auto">
                     <div class="card nav-card" >
                     <div class="row">
@@ -39,7 +39,7 @@ $default_thumb = $this->assetUrl('img/BlockI-Logo-Full-Color-RGB.png');
             <?php }?>
             <?php if ($nextPage){
                 $nextTitle = $nextPage->title();
-                $nextPageThumb = getThumbnail($nextPage, $default_thumb);?>
+                $nextPageThumb = getThumbnail($nextPage, $default_thumb, 'square');?>
                 <div class="ml-auto">
                     <div class="card nav-card" >
                         <div class="row">

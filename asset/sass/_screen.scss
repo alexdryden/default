@@ -747,3 +747,40 @@ p {
 
     }
 }
+
+.toc-card{
+    border-radius: 0;
+    border: none;
+    &:hover{
+        box-shadow: 0 0 10px 2px #858585;
+        a{
+            color: #ed1616;
+        }
+
+    }
+}
+
+.card-img-top {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.panel-heading {
+    position: relative;
+    height: 12em;
+    width: 100%;
+    overflow: hidden;
+}
+
+.card-body {
+    background: #E8E9EB;
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+.toc-card-header {
+    text-align:center
+}
+
+.toc-row {
+    margin-top:2rem
+}

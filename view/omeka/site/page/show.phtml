@@ -3,7 +3,7 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/page-blocks.css', 'Omek
 $this->htmlElement('body')->appendAttribute('class', 'page');
 $this->pageTitle($page->title(), 2);
 $showPagePagination = $this->siteSetting('show_page_pagination', true);
-$default_thumb = $this->assetUrl('img/BlockI-Logo-Full-Color-RGB.png');
+$default_thumb = $this->assetUrl('img/Placeholder.png');
 ?>
 
 <?php
@@ -48,26 +48,27 @@ if ($activePage):
 
                 <?php if ($activePage): ?>
                 <?php if ($activePage['depth'] == 0): ?>
-
+                <h2 class="toc-card-header">Exhibit Contents</h2>
                 <?php
                 $children = $activePage['page']->getPages();
                 $iter = 1; // use iter to determine whether the card is on the left or right
                 foreach ($children as $child) : ?>
                     <?php if ($iter % 2): // if card is on the left, make a new row?>
-                        <div class="row mt-3">
+                        <div class="row toc-row">
                     <?php endif; ?>
                     <?php
                     $childPageObject = $this->api()->read('site_pages', ["site" => $site->id(),"title" => $child->getLabel()])->getContent();
-                    $pageThumb = getThumbnail($childPageObject, $default_thumb);
+                    $pageThumb = getThumbnail($childPageObject, $default_thumb, 'large');
                     ?>
                     <div class="col-md-6">
-                        <a href="<?php echo $child->getHref(); ?>">
-                            <div class="card"><img alt="<?php echo $pageThumb['alt'] ?>" class="card-img-top" src="<?php echo $pageThumb['url'] ?>" />
-                                <div class="card-body">
-                                    <h5 class="card-title"><a href="<?php echo $child->getHref(); ?>"><?php echo $child->getLabel(); ?></a></h5>
-                                </div>
+                        <div class="card toc-card">
+                            <div class="panel-heading">
+                                <img alt="<?php echo $pageThumb['alt'] ?>" class="card-img-top" src="<?php echo $pageThumb['url'] ?>" />
                             </div>
-                        </a>
+                            <div class="card-body">
+                                <h5 class="card-title"><a class="stretched-link" href="<?php echo $child->getHref(); ?>"><?php echo $child->getLabel(); ?></a></h5>
+                            </div>
+                        </div>
                     </div>
                     <?php if (($iter % 2) == 0): // if card is on the right, close row?>
                         </div>
@@ -88,7 +89,7 @@ if ($activePage):
     </div>
     </div>
 <?php
-function getThumbnail($page, $default){
+function getThumbnail($page, $default, $size){
     //default thumbnail if the page has no media
     $url = $default;
     $alt = 'Default image for next page when no specific media was found for the page';
@@ -98,7 +99,7 @@ function getThumbnail($page, $default){
         if (get_class($block) === 'Omeka\Api\Representation\SitePageBlockRepresentation'){
             if ($block->attachments()){
                 $media = $block->attachments()[0]->media();
-                $url = $media->thumbnailUrl("square");
+                $url = $media->thumbnailUrl($size);
 
                 if (array_key_exists('o-module-alt-text:alt-text', $media->primaryMedia()->jsonSerialize())
                     && $media->primaryMedia()->jsonSerialize()['o-module-alt-text:alt-text']
