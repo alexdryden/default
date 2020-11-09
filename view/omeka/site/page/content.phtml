@@ -5,7 +5,7 @@ foreach ($page->blocks() as $block) {
         $layouts[$block->layout()] = null;
         $this->blockLayout()->prepareRender($block->layout());
     } ?>
-<div class="block <?php echo $block->layout(); ?>-block">
-    <?php echo $this->blockLayout()->render($block);?>
-</div>
+    <div class="block <?php echo $block->layout(); ?>-block">
+        <?php echo $this->blockLayout()->render($block);?>
+    </div>
 <?php } ?>
