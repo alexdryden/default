@@ -35,12 +35,16 @@ if ($activePage):
 
 <?php $this->trigger('view.show.before'); ?>
     <div class="row">
+<?php if (!$this->themeSetting('side_nav')): ?>
         <div class="col-md-3">
             <?php
             printNav($activeRoot);
             ?>
         </div>
         <div class="col-md-9">
+<?php else: ?>
+    <div class="col-md-9 offset-md-1-5">
+<?php endif; ?>
             <div class="main-content-container">
                 <div class="blocks">
                     <?php echo $this->content; ?>
