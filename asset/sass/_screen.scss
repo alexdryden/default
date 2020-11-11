@@ -795,6 +795,11 @@ p {
     margin-left: 12.5%
 }
 
-.table-of-contents-nav ul {
-    list-style-type: none;
+.table-of-contents-nav {
+    h3 {
+        text-align:center
+    }
+    ul {
+        list-style-type: none;
+    }
 }
