@@ -37,9 +37,11 @@ if ($activePage):
     <div class="row">
 <?php if (!$this->themeSetting('side_nav')): ?>
         <div class="col-md-3">
+            <div class="table-of-contents-nav">
             <?php
             printNav($activeRoot);
             ?>
+            </div>
         </div>
         <div class="col-md-9">
 <?php else: ?>
