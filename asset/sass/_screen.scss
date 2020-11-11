@@ -28,7 +28,7 @@ a:visited {
 
 a:active,
 a:hover {
-    color: lighten($link, 20%);
+    color: darken($link, 20%);
 }
 
 h1 {
@@ -748,7 +748,7 @@ p {
     &:hover{
         box-shadow: 0 0 10px 2px #858585;
         a{
-            color: #ed1616;
+            color: darken($link, 20%);
         }
 
     }
@@ -760,7 +760,7 @@ p {
     &:hover{
         box-shadow: 0 0 10px 2px #858585;
         a{
-            color: #ed1616;
+            color: darken($link, 20%);;
         }
 
     }
