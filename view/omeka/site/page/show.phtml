@@ -39,9 +39,8 @@ if ($activePage):
         <div class="col-md-3">
             <div class="table-of-contents-nav">
                 <h3>Exhibit Contents</h3>
-            <?php
-            printNav($activeRoot);
-            ?>
+                <?php console_log($activePage['page']->toArray()); ?>
+                <?php printNav($activeRoot, $activePage['page']->toArray()); ?>
             </div>
         </div>
         <div class="col-md-9">
@@ -122,14 +121,18 @@ function getThumbnail($page, $default, $size){
     }
     return ['url' => $url, 'alt' => $alt];
 }
-function printNav($parentPage) {
+function printNav($parentPage, $activePage) {
     if (count($parentPage) != 0) {
-        echo '<ul><li><a href="' . $parentPage['params']['page-slug'] . '">' . $parentPage['label'] . '</a>';
+        if ($activePage['params']['page-slug'] == $parentPage['params']['page-slug']) {
+            echo '<ul><li id="current-toc">' . $parentPage['label'] . '</li>';
+        } else {
+            echo '<ul><li><a href="' . $parentPage['params']['page-slug'] . '">' . $parentPage['label'] . '</a></li>';
+        }
         $children = $parentPage['pages'];
         foreach ($children as $child) {
-            printNav($child);
+            printNav($child, $activePage);
         }
-        echo '</li></ul>';
+        echo '</ul>';
     }
 }
 function console_log($output, $with_script_tags = true) {
