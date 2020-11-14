@@ -815,7 +815,10 @@ p {
 }
 .banner {
     margin: 0;
-    height: 18em;
+    min-height: 18em;
     background-size: cover;
     background-position: center center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
