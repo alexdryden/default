@@ -405,6 +405,10 @@ nav.pagination {
     color:white;
 }
 
+.site-title:hover h1 {
+    text-shadow: 5px 4px 5px #000000;
+}
+
 header {
     margin: 0 0 (2.5 * $spacing-l);
     background-color: #fff;
