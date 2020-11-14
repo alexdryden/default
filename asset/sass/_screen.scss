@@ -399,9 +399,10 @@ nav.pagination {
 /* @group ----- Header ----- */
 
 .site-title h1 {
-    font-size: 1.25 * $base-font-size;
+    font-size: 3 * $base-font-size;
     line-height: $base-line-height;
     padding-right: $base-line-height;
+    color:white;
 }
 
 header {
