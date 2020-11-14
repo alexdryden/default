@@ -807,4 +807,8 @@ p {
         margin-top: 10px;
         line-height: normal;
     }
+    li#current-toc {
+        border-left: 2px solid #000000;
+        padding-left: .25em;
+    }
 }
