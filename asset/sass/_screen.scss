@@ -823,6 +823,7 @@ p {
         padding-left: .25em;
     }
 }
+
 .banner {
     margin: 0;
     min-height: 18em;
@@ -832,4 +833,17 @@ p {
     align-items: center;
     justify-content: center;
     background-attachment:fixed;
+}
+
+.banner-caption {
+    color:white;
+    font-size:16px;
+    align-self: flex-end;
+    position: absolute;
+    right: 10px;
+}
+
+.banner-caption a:link, .banner-caption a:visited {
+    color:white!important;
+    text-decoration:underline;
 }
