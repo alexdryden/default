@@ -54,7 +54,10 @@ $userBar = $this->userBar();
         <header>
                 <?php if ($this->themeSetting('banner')): ?>
                    <div class="col-sm-12 banner" style="background-image:linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url('<?php echo $this->themeSettingAssetUrl('banner');?>')">
-                       <a href="<?php echo $site->url(); ?>" class="site-title"><h1><?php echo $escape($siteTitle); ?></h1></a>
+                       <div class="site-title">
+                           <a href="<?php echo $site->url(); ?>" class="site-title"><h1><?php echo $escape($siteTitle); ?></h1></a>
+                       </div>
+                       <div class="banner-caption"><?php echo $this->themeSetting('banner_caption');?></div>
                    </div>
                 <?php else: ?>
                     <div class="col-sm-12 banner" style="background-image:linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url('<?php echo $this->assetUrl('img/Default-header.jpg') ?>')">
