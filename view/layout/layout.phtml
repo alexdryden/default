@@ -57,7 +57,9 @@ $userBar = $this->userBar();
                        <a href="<?php echo $site->url(); ?>" class="site-title"><h1><?php echo $escape($siteTitle); ?></h1></a>
                    </div>
                 <?php else: ?>
-                    <a href="<?php echo $site->url(); ?>" class="site-title"><h1><?php echo $escape($siteTitle); ?></h1></a>
+                    <div class="col-sm-12 banner" style="background-image:linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url('<?php echo $this->assetUrl('img/Default-header.jpg') ?>')">
+                        <a href="<?php echo $site->url(); ?>" class="site-title"><h1><?php echo $escape($siteTitle); ?></h1></a>
+                    </div>
                 <?php endif; ?>
 
             <div id="search">
