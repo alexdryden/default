@@ -399,9 +399,19 @@ nav.pagination {
 /* @group ----- Header ----- */
 
 .site-title h1 {
-    font-size: 1.25 * $base-font-size;
+    font-size: 3 * $base-font-size;
     line-height: $base-line-height;
     padding-right: $base-line-height;
+    color:white;
+    -webkit-transition: text-shadow 0.2s linear;
+    -moz-transition: text-shadow 0.2s linear;
+    -ms-transition: text-shadow 0.2s linear;
+    -o-transition: text-shadow 0.2s linear;
+    transition: text-shadow 0.2s linear;
+}
+
+.site-title:hover h1 {
+    text-shadow: 5px 4px 5px #000000;
 }
 
 header {
@@ -812,4 +822,28 @@ p {
         border-left: 2px solid #000000;
         padding-left: .25em;
     }
+}
+
+.banner {
+    margin: 0;
+    min-height: 18em;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-attachment:fixed;
+}
+
+.banner-caption {
+    color:white;
+    font-size:16px;
+    align-self: flex-end;
+    position: absolute;
+    right: 10px;
+}
+
+.banner-caption a:link, .banner-caption a:visited {
+    color:white!important;
+    text-decoration:underline;
 }
