@@ -794,3 +794,22 @@ p {
 .offset-md-1-5 {
     margin-left: 12.5%
 }
+
+.table-of-contents-nav {
+    position: -webkit-sticky;
+    position: sticky;
+    top:0;
+    ul {
+        list-style-type: none;
+        padding-left:20px
+    }
+    li {
+        margin-top: 10px;
+        line-height: normal;
+        font-size: 18px;
+    }
+    li#current-toc {
+        border-left: 2px solid #000000;
+        padding-left: .25em;
+    }
+}
