@@ -848,3 +848,11 @@ p {
     color:white!important;
     text-decoration:underline;
 }
+.xxMainLibxx-nav-title {
+    max-height: $base-line-height*1.9;
+    overflow: hidden;
+}
+
+.xxMainLibxx-nav-button {
+    width: 40%;
+}
