@@ -1,0 +1,36 @@
+<h2>Mason List of Exhibits: Theme Override View</h2>
+<p>here are page id's based on the depth the user indicated for exhibits</p>
+<p>the other form options (Include all Omeka-s exhibits, Include other sites, team) aren't hooked up to anything yet</p>
+<p>here is the array that is being passed right now</p>
+<?php
+
+$exhibits = array_merge($this->exhibits, $this->siblings);
+
+$iter = 1; // use iter to determine whether the card is on the left or right
+foreach ($exhibits as $page_id => $preview) : ?>
+    <?php if ($iter % 2): // if card is on the left, make a new row?>
+        <div class="row toc-row">
+    <?php endif; ?>
+    <?php
+    $childPageObject = $preview['site_page'];
+
+    ?>
+    <div class="col-md-6">
+        <div class="card toc-card">
+            <div class="panel-heading">
+                <img alt="<?php echo $preview['alt'] ?>" class="card-img-top" src="<?php echo $preview['img_src'] ?>" />
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><a class="stretched-link" href="<?php echo $preview['url']; ?>"><?php echo $preview['title']; ?></a></h5>
+            </div>
+        </div>
+    </div>
+    <?php if (($iter % 2) == 0): // if card is on the right, close row?>
+        </div>
+    <?php endif;
+    $iter++;
+endforeach;
+?>
+<?php if (($iter % 2) == 0): // if last card is on the left, close row?>
+    </div>
+<?php endif; ?>
