@@ -89,7 +89,7 @@ header nav ul.navigation {
     }
 
     & > li:not(:last-child) {
-        margin-right: $spacing-m;
+        margin-right: $spacing-m + $spacing-s;
     }
 
     & > li > ul {
