@@ -249,7 +249,11 @@ header nav ul {
     }
 
     li.active {
-        font-weight: bold;
+        background: #f8fafc;
+    }
+
+    li.active a {
+        color:black!important
     }
     
     li.parent {
