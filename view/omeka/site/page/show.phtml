@@ -51,42 +51,6 @@ if ($activePage):
                 <div class="blocks">
                     <?php echo $this->content; ?>
                 </div>
-
-                <?php if ($activePage): ?>
-                <?php if ($activePage['depth'] == 0): ?>
-                <h2 class="toc-card-header">Exhibit Contents</h2>
-                <?php
-                $children = $activePage['page']->getPages();
-                $iter = 1; // use iter to determine whether the card is on the left or right
-                foreach ($children as $child) : ?>
-                    <?php if ($iter % 2): // if card is on the left, make a new row?>
-                        <div class="row toc-row">
-                    <?php endif; ?>
-                    <?php
-                    $childPageObject = $this->api()->read('site_pages', ["site" => $site->id(),"title" => $child->getLabel()])->getContent();
-                    $pageThumb = getThumbnail($childPageObject, $default_thumb, 'large');
-                    ?>
-                    <div class="col-md-6">
-                        <div class="card toc-card">
-                            <div class="panel-heading">
-                                <img alt="<?php echo $pageThumb['alt'] ?>" class="card-img-top" src="<?php echo $pageThumb['url'] ?>" />
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title"><a class="stretched-link" href="<?php echo $child->getHref(); ?>"><?php echo $child->getLabel(); ?></a></h5>
-                            </div>
-                        </div>
-                    </div>
-                    <?php if (($iter % 2) == 0): // if card is on the right, close row?>
-                        </div>
-                    <?php endif;
-                    $iter++;
-                endforeach;
-                ?>
-                <?php if (($iter % 2) == 0): // if last card is on the left, close row?>
-            </div>
-            <?php endif; ?>
-            <?php endif; ?>
-            <?php endif; ?>
         </div>
         <?php $this->trigger('view.show.after'); ?>
         <?php if ($showPagePagination): ?>
