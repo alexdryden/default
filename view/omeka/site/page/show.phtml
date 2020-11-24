@@ -11,7 +11,7 @@ $nav = $site->publicNav();
 $container = $nav->getContainer();
 
 $activePage = $nav->findActive($container);
-
+if ($activePage):
 if ($activePage['depth'] !== 0) {
     $allRootPages = $container->getPages();
 
@@ -25,8 +25,6 @@ if ($activePage['depth'] !== 0) {
 }
 $activeRoot = $activeRoot->toArray();
 $child_pages = $activeRoot['pages'];
-
-if ($activePage):
     ?>
     <?php if ($activePage['depth'] !== 0): ?>
     <nav class="breadcrumbs"><?php echo $nav->breadcrumbs(); ?></nav>
@@ -35,11 +33,10 @@ if ($activePage):
 
 <?php $this->trigger('view.show.before'); ?>
     <div class="row">
-<?php if (!$this->themeSetting('side_nav')): ?>
+<?php if (!$this->themeSetting('side_nav') && $activePage): ?>
         <div class="col-md-3">
             <div class="table-of-contents-nav">
                 <h3>Exhibit Contents</h3>
-                <?php console_log($activePage['page']->toArray()); ?>
                 <?php printNav($activeRoot, $activePage['page']->toArray()); ?>
             </div>
         </div>
