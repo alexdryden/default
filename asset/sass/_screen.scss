@@ -242,6 +242,10 @@ header nav ul {
         border-top: 1px solid $light;
         position: relative;
         padding: 7px 0;
+        -webkit-transition: background-color .2s ease-out;
+        -moz-transition: background-color .2s ease-out;
+        -o-transition: background-color .2s ease-out;
+        transition: background-color .2s ease-out;
     }
 
     li li:last-of-type {
@@ -249,7 +253,7 @@ header nav ul {
     }
 
     li.active, li:hover {
-        background: #f8fafc;
+        background-color: #f8fafc;
     }
 
     li.active a, li:hover a {
