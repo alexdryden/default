@@ -402,7 +402,8 @@ nav.pagination {
 
 .breadcrumbs {
     font-size: .75 * $base-font-size;
-    margin: $spacing-l 0 (-$spacing-m);
+    margin: 0 0 $spacing-l 0;
+    height: 30px;
 }
 
 /* @end */
@@ -452,12 +453,9 @@ button.o-icon-search {
 
 #search {
     position: absolute;
-    top: 100%;
+    top: 0;
     left: 0;
     right: 0;
-    background-color: #fff;
-    border-bottom: 1px solid $light;
-    border-top: 1px solid $light;
     padding: $spacing-s gutter();
 }
 
