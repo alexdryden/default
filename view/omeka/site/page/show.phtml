@@ -50,7 +50,8 @@ $child_pages = $activeRoot['pages'];
                 <div class="blocks">
                     <?php echo $this->content; ?>
                 </div>
-        </div>
+                <div class="clearfix"></div>
+            </div>
         <?php $this->trigger('view.show.after'); ?>
         <?php if ($showPagePagination): ?>
             <?php echo $this->sitePagePagination(); ?>
