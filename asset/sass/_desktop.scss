@@ -88,8 +88,9 @@ header nav ul.navigation {
         display: none;
     }
 
-    & > li:not(:last-child) {
-        margin-right: $spacing-m;
+    & > li {
+        padding-right: $spacing-m;
+        padding-left: $spacing-m;
     }
 
     & > li > ul {
@@ -117,8 +118,8 @@ header nav ul.navigation {
 
         &:after {
             content: "";
-            left: -9999px;
-            right: -9999px;
+            left: 0;
+            right: 0;
             background-color: #fff;
             position: absolute;
             top: 0;

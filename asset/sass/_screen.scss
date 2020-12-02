@@ -187,6 +187,7 @@ header h1 {
 header nav {
     position: relative;
     padding: 0;
+    background-color:#192947;
 }
 
 header nav.closed ul {
@@ -229,6 +230,7 @@ header nav ul {
         display: inline-block;
         width: 100%;
         padding: $spacing-s;
+        color:white!important
     }
 
     a:hover {
@@ -239,14 +241,23 @@ header nav ul {
     li {
         border-top: 1px solid $light;
         position: relative;
+        padding: 7px 0;
+        -webkit-transition: background-color .2s ease-out;
+        -moz-transition: background-color .2s ease-out;
+        -o-transition: background-color .2s ease-out;
+        transition: background-color .2s ease-out;
     }
 
     li li:last-of-type {
         padding-bottom: 0;
     }
 
-    li.active {
-        font-weight: bold;
+    li.active, li:hover {
+        background-color: #f8fafc;
+    }
+
+    li.active a, li:hover a {
+        color:black!important
     }
     
     li.parent {
@@ -417,7 +428,6 @@ nav.pagination {
 header {
     margin: 0 0 (2.5 * $spacing-l);
     background-color: #fff;
-    border-bottom: 1px solid $light;
     position: relative;
 
     & > * {
