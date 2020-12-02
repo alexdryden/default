@@ -54,6 +54,9 @@ $userBar = $this->userBar();
         <header>
                 <?php if ($this->themeSetting('banner')): ?>
                    <div class="col-sm-12 banner" style="background-image:linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url('<?php echo $this->themeSettingAssetUrl('banner');?>')">
+                       <div id="search">
+                           <?php echo $this->partial('common/search-form'); ?>
+                       </div>
                        <div class="site-title">
                            <a href="<?php echo $site->url(); ?>" class="site-title"><h1><?php echo $escape($siteTitle); ?></h1></a>
                        </div>
@@ -61,16 +64,15 @@ $userBar = $this->userBar();
                    </div>
                 <?php else: ?>
                     <div class="col-sm-12 banner" style="background-image:linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url('<?php echo $this->assetUrl('img/Default-header.jpg') ?>')">
+                        <div id="search">
+                            <?php echo $this->partial('common/search-form'); ?>
+                        </div>
                         <div class="site-title">
                             <a href="<?php echo $site->url(); ?>" class="site-title"><h1><?php echo $escape($siteTitle); ?></h1></a>
                         </div>
                         <div class="banner-caption">University of Illinois Main Library, courtesy of <a href="https://commons.wikimedia.org/wiki/File:Main_Library-University_of_Illinois_at_Urbana-Champaign_09.jpg">Killivalavan Solai, Wikimedia Commons</a></div>
                     </div>
                 <?php endif; ?>
-
-            <div id="search">
-                <?php echo $this->partial('common/search-form'); ?>
-            </div>
 
             <nav>
             <?php
