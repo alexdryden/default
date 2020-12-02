@@ -687,6 +687,10 @@ body.resource #content > h2:first-of-type + h3 {
     margin-bottom: $spacing-m;
 }
 
+#user-bar .admin.media {
+    display: inline;
+}
+
 .media-render > * {
     max-width: 100%;
 }
