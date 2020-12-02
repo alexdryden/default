@@ -71,10 +71,9 @@
 
 .left .item.resource,
 .right .item.resource {
-    margin: 0 0 1rem 0;
 
     &:first-of-type {
-        padding-top: calc(1rem - 1px);
+        padding-top: 6px;
         margin-top: 0;
     }
 
