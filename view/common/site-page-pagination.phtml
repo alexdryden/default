@@ -5,7 +5,45 @@ $nextText = $translate('Next Section: ');
 $default_thumb = $this->assetUrl('img/Default_square.png');
 ?>
 
+<?php
+$directory = [];
+$nav = $page->site()->navigation();
+/*
+ * go through the navigation and for each page, make an key in the directory where the value is the oldest ancestor
+ * of that page.
+ */
+function fillDir ($chapter, $ancestor, $dir)
+{
+    foreach ($chapter['links'] as $section):
+        $dir[$section['data']['id']] = $ancestor;
+        if ($section['links']){
+            $dir = fillDir($section, $ancestor, $dir);
+        }
+    endforeach;
+    return $dir;
+}
 
+foreach ($nav as $chapter):
+    $directory[$chapter['data']['id']] = $chapter['data']['id'];
+    $directory = fillDir($chapter, $chapter['data']['id'], $directory);
+endforeach;
+
+/*
+ * Only show the next or prev page if that page and the current page share the same oldest ancestor, ie they are par of
+ * the same chapter/exhibit.
+ */
+if ($prevPage){
+    if ($directory[$prevPage->id()]!=$directory[$page->id()]){
+        $prevPage = null;
+    }
+}
+if ($nextPage){
+    if ($directory[$nextPage->id()]!=$directory[$page->id()]){
+        $nextPage = null;
+    }
+}
+
+?>
 <?php if ($prevPage || $nextPage): ?>
 
     <div class="site-page-pagination">
