@@ -84,7 +84,7 @@
     .media-render a {
         display: block;
     }
-    .media-block::after {
+    block.media-block::after {
         clear: both;
     }
     
