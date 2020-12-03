@@ -84,6 +84,9 @@
     .media-render a {
         display: block;
     }
+    .media-block::after {
+        clear: both;
+    }
     
     audio,
     canvas,
