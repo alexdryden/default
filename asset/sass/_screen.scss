@@ -860,8 +860,12 @@ p {
     color:white!important;
     text-decoration:underline;
 }
+
 .xxMainLibxx-nav-title {
     max-height: $base-line-height*1.9;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
