@@ -1,5 +1,7 @@
 @import "base";
-
+.block {
+    clear: both;
+}
 .item-showcase {
     margin: 1rem 0;
     border-top: 1px solid $border-gray;
@@ -84,9 +86,7 @@
     .media-render a {
         display: block;
     }
-    block.media-block::after, .block {
-        clear: both;
-    }
+
     
     audio,
     canvas,
