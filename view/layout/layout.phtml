@@ -42,8 +42,12 @@ $userBar = $this->userBar();
                 color: <?php echo darken_color($accentColor, 20); ?>;
             }
 
-            .toc-card:hover a {
+            .toc-card:hover a, .toc-card:hover .card-title {
                 color: <?php echo darken_color($accentColor, 20); ?>;
+            }
+
+            .card-title{
+                color: <?php echo $accentColor; ?>;
             }
             <?php endif; ?>
         </style>
