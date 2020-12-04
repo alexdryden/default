@@ -782,11 +782,15 @@ p {
     border: none;
     &:hover{
         box-shadow: 0 0 10px 2px #858585;
-        a{
+        a, .card-title{
             color: darken($link, 20%);
         }
 
     }
+}
+
+.card-title{
+    color: $link;
 }
 
 .card-img-top {
