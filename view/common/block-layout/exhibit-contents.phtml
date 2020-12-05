@@ -15,7 +15,7 @@ foreach ($exhibits as $page_id => $preview) : ?>
                 <img alt="<?php echo $preview['alt'] ?>" class="card-img-top" src="<?php echo $preview['img_src'] ?>" />
             </div>
             <div class="card-body">
-                <h5 class="card-title"><a class="stretched-link" href="<?php echo $preview['url']; ?>"><?php echo $preview['title']; ?></a></h5>
+                <h5 class="card-title text-truncate"><a class="stretched-link" href="<?php echo $preview['url']; ?>"><?php echo $preview['title']; ?></a></h5>
             </div>
         </div>
     </div>
