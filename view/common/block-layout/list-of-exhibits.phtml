@@ -4,11 +4,15 @@
 
 <?php
 
-$exhibits = array_merge($this->exhibits, $this->siblings);
+$exhibits = $this->exhibits + $this->siblings;
+if (! $this->include_self){
+    unset($exhibits[$this->current_page]);
+}
 
 $iter = 1; // use iter to determine whether the card is on the left or right
 foreach ($exhibits as $page_id => $preview) : ?>
     <?php if ($iter % 2): // if card is on the left, make a new row?>
+
         <div class="row toc-row">
     <?php endif; ?>
     <?php
