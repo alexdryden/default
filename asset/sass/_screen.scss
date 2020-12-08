@@ -475,13 +475,21 @@ button.o-icon-search {
     flex-wrap: nowrap;
     box-shadow:none;
     border-radius: 0 3px 3px 0;
+    justify-content: end;
+    transition: box-shadow .2s ease-out;
 }
+
 #search form:focus-within {
     box-shadow: 0 0 13px 7px #286090;
 }
 
 #search form input[type="text"] {
-    width: 100%;
+    width: 40%;
+    transition: width .2s ease-out;
+}
+
+#search form input[type="text"]:focus {
+    width: 90%;
 }
 
 #search form button[type="submit"] {
