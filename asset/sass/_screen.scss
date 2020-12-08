@@ -92,6 +92,13 @@ input[type="file"] {
     font-size: .75 * $base-font-size;
 }
 
+#search form:focus-within [type="submit"] {
+    background-color:#192947;
+}
+
+#search form:focus-within [type="submit"]::before {
+    color:white;
+}
 button,
 a.button,
 [type="submit"] {
@@ -104,6 +111,10 @@ a.button,
     -moz-appearance: none;
     border: 0;
     cursor: pointer;
+    -webkit-transition: background-color .5s ease-out;
+    -moz-transition: background-color .5s ease-out;
+    -o-transition: background-color .5s ease-out;
+    transition: background-color .5s ease-out;
 }
 
 select {
