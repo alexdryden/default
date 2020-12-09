@@ -498,12 +498,7 @@ button.o-icon-search {
 }
 
 #search form input[type="text"] {
-    width: 40%;
-    transition: width .2s ease-out;
-}
-
-#search form:focus-within input[type="text"] {
-    width: 90%;
+    width: 100%;
 }
 
 #search form button[type="submit"] {
