@@ -210,6 +210,10 @@ header .parent .parent .parent ul a {
     padding: $spacing-s;
 }
 
+#search-form::before {
+    width:355px;
+}
+
 #search form input[type="text"],
 #search form button[type="submit"] {
     height: $base-line-height;
