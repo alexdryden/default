@@ -484,12 +484,12 @@ button.o-icon-search {
     top: 0;
     right: 0;
     bottom: 0;
-    left: 0;
     border-radius: 0 7px 7px 0;
     box-shadow: 0 0 13px 7px #286090;
     opacity: 0;
     transition: opacity .7s ease-out;
     z-index:-1;
+    width:355px;
 }
 
 #search-form:focus-within::before {
