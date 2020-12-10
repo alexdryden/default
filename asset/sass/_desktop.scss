@@ -219,7 +219,7 @@ header .parent .parent .parent ul a {
 }
 
 #search form button[type="submit"] {
-    width: 55px;
+    width: 30px;
     height: $base-line-height;
     padding: 0;
 
@@ -232,7 +232,7 @@ header .parent .parent .parent ul a {
     transition: width .2s ease-out;
 }
 #search form:focus-within input[type="text"] {
-    width: 85%;
+    width: 100%;
 }
 
 /* @end */
