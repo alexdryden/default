@@ -289,6 +289,7 @@ ul.preview.resource-list li:first-of-type {
     padding-top: ($spacing-l - 1px);
 }
 header nav ul.navigation li.parent,
+header nav ul.navigation li,
 header nav ul.navigation li.parent div.parent-link {
     padding: 0;
     margin: 0;
@@ -298,4 +299,12 @@ header nav ul.navigation li.parent div.parent-link a {
     padding: 1em;
     margin: 0;
 }
+
+
+header nav ul li a {
+    display: inline-block;
+    padding: 1em;
+    margin: 0;
+}
+
 /* @end */
