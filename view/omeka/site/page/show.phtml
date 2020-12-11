@@ -35,7 +35,7 @@ $child_pages = $activeRoot['pages'];
 
 <?php $this->trigger('view.show.before'); ?>
     <div class="row">
-<?php if (!$this->themeSetting('side_nav') && $activePage): ?>
+<?php if (!$this->themeSetting('side_nav') && $activePage && count($child_pages) != 0): ?>
         <div class="col-md-3">
             <div class="table-of-contents-nav">
                 <h3>Exhibit Contents</h3>
