@@ -54,10 +54,6 @@ header nav:before {
     display: none;
 }
 
-header nav ul a {
-    padding: 0;
-}
-
 header nav ul li {
     position: static;
 }
@@ -86,11 +82,6 @@ header nav ul.navigation {
 
     li ul:before {
         display: none;
-    }
-
-    & > li {
-        padding-right: $spacing-m;
-        padding-left: $spacing-m;
     }
 
     & > li > ul {
@@ -306,6 +297,24 @@ body.item-set .metadata ~ nav.pagination:first-of-type {
 ul.preview.resource-list li:first-of-type {
     border-top: 1px solid $light;
     padding-top: ($spacing-l - 1px);
+}
+header nav ul.navigation li.parent,
+header nav ul.navigation li,
+header nav ul.navigation li.parent div.parent-link {
+    padding: 0;
+    margin: 0;
+}
+header nav ul.navigation li.parent div.parent-link a {
+    display: inline-block;
+    padding: 0.7em 1em;
+    margin: 0;
+}
+
+
+header nav ul li a {
+    display: inline-block;
+    padding: 0.7em 1em;
+    margin: 0;
 }
 
 /* @end */
