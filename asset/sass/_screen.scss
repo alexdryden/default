@@ -413,7 +413,7 @@ nav.pagination {
 
 .breadcrumbs {
     font-size: .75 * $base-font-size;
-    margin: 0 0 $spacing-l 0;
+    margin: 0 0 3rem 0;
     height: 30px;
 }
 
@@ -785,14 +785,14 @@ a.metadata-browse-link {
     font-weight: 600;
 }
 p {
-    font-size: 18px;
-    line-height: normal;
+    font-size: 1.8rem;
+    line-height: 1.5;
 }
 
 .main-content-container {
     background-color: #fff;
     box-shadow: 0 0 10px 2px #858585;
-    padding: 2rem 2.5rem;
+    padding: 3.2rem 4rem;
 }
 
 .site-page-pagination{
@@ -824,6 +824,7 @@ p {
 
     }
     .card-title{
+        font-size:2rem;
         color: $link;
     }
 }
@@ -850,7 +851,7 @@ p {
 }
 
 .toc-row {
-    margin-top:2rem
+    margin-top:3rem
 }
 
 .offset-md-1-5 {
@@ -866,9 +867,9 @@ p {
         padding-left:20px
     }
     li {
-        margin-top: 10px;
+        margin-top: 1rem;
         line-height: normal;
-        font-size: 18px;
+        font-size: 1.8rem;
     }
     li#current-toc {
         border-left: 2px solid #000000;
@@ -889,7 +890,7 @@ p {
 
 .banner-caption {
     color:white;
-    font-size:16px;
+    font-size:1.6rem;
     align-self: flex-end;
     position: absolute;
     right: 10px;

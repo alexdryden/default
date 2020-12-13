@@ -17,8 +17,12 @@ $link:                                  #286090;
 
 // Typography
 
-$base-font-size:                        20px;
+$base-font-size:                        2rem;
 $base-line-height:                      30px;
+
+:root {
+    font-size: 62.5%; /* (62.5/100) * 16px = 10px */
+}
 
 // Units
 
