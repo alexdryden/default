@@ -99,6 +99,7 @@ header nav ul.navigation {
         padding: $spacing-m (2 * gutter());
         border-bottom: 0;
         border-color: $light;
+        box-shadow: 0 0 10px 2px #858585;
 
         &:after {
             content: "";
