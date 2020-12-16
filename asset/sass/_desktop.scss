@@ -100,6 +100,7 @@ header nav ul.navigation {
         border-bottom: 0;
         border-color: $light;
         box-shadow: 0 0 10px 2px #858585;
+        clip-path: inset(0px -9999px -9999px -9999px);
 
         &:after {
             content: "";
@@ -110,7 +111,6 @@ header nav ul.navigation {
             top: 0;
             bottom: 0;
             border-bottom: 1px solid $light;
-            border-top: 1px solid $light;
             z-index: -1;
         }
     }
