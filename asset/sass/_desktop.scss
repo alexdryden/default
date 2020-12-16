@@ -46,6 +46,7 @@ header nav {
     margin: 0 auto !important;
     position: static;
     padding: 0 (2 * gutter());
+    box-shadow: 0 0 10px 2px #858585;
 }
 
 header nav:before {
