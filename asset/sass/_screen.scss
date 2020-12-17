@@ -316,9 +316,6 @@ header nav ul.open > li {
 }
 
 /* Second level items */
-header nav > ul > li > ul > li.active > a {
-    margin-left: -1.5em;
-}
 
 header nav > ul > li > ul > li.active > a:before {
     content: ">";
