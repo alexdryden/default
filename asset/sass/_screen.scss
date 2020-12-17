@@ -282,10 +282,6 @@ header nav ul {
     .parent-link {
       display: flex;
     }
-
-    .parent-link > a {
-        width: calc(100% - #{2 * $spacing-l});
-    }
     
     .child-toggle {
         color: $light;
