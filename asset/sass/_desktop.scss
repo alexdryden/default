@@ -91,18 +91,20 @@ header nav ul.navigation {
         opacity:0;
         background-color: #fff;
         list-style: none;
-        padding: ($spacing-m - 1px) 0 ($spacing-s - 1px);
+        padding: 0;
         z-index: 1;
     }
 
-    & > li > ul a:hover {
-        background-color:#d2d2d2;
+    & > li > ul a {
+        padding: .75rem 2rem;
+        &:hover {
+            background-color: #d2d2d2;
+        }
     }
-    
+
     & > li:hover > ul {
         opacity:1;
         transition-delay: .1s;
-        padding: $spacing-m (2 * gutter());
         border-bottom: 0;
         border-color: $light;
         box-shadow: 0 0 10px 2px #858585;
