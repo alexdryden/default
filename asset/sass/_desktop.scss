@@ -93,6 +93,7 @@ header nav ul.navigation {
         list-style: none;
         padding: 0;
         z-index: 1;
+        display:none;
     }
 
     & > li > ul a {
@@ -103,6 +104,7 @@ header nav ul.navigation {
     }
 
     & > li:hover > ul {
+        display:block;
         opacity:1;
         transition-delay: .1s;
         border-bottom: 0;
