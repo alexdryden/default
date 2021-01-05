@@ -263,8 +263,12 @@ header nav ul {
         padding-bottom: 0;
     }
 
-    li.active, li:hover {
+    li.active {
         background-color: #f8fafc;
+    }
+
+    li:hover {
+        background-color: white;
     }
 
     li.active a, li:hover a {
@@ -277,10 +281,6 @@ header nav ul {
     
     .parent-link {
       display: flex;
-    }
-
-    .parent-link > a {
-        width: calc(100% - #{2 * $spacing-l});
     }
     
     .child-toggle {
@@ -316,15 +316,6 @@ header nav ul.open > li {
 }
 
 /* Second level items */
-header nav > ul > li > ul > li.active > a {
-    margin-left: -1.5em;
-}
-
-header nav > ul > li > ul > li.active > a:before {
-    content: ">";
-    display: inline-block;
-    width: 1.5em;
-}
 
 header nav > ul > li > ul > li a {
     padding-left: $spacing-l;
@@ -443,7 +434,6 @@ header {
     position: relative;
 
     & > * {
-        @include container;
         padding: 0 gutter();
         display: block;
     }
