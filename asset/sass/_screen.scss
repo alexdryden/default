@@ -905,3 +905,7 @@ p {
 .xxMainLibxx-nav-button {
     width: 40%;
 }
+
+.col-md-6:not(:first-child) {
+    margin-top:3rem;
+}
