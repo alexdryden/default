@@ -901,6 +901,7 @@ p {
     overflow: hidden;
     /*! autoprefixer: ignore next */
     -webkit-box-orient: vertical;
+    font-size: 1.75rem;
 }
 
 .xxMainLibxx-nav-button {
@@ -909,4 +910,8 @@ p {
 
 .col-md-6:not(:first-child) {
     margin-top:3rem;
+}
+
+.card-block a {
+    font-size:1.4rem
 }
