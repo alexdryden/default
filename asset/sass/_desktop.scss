@@ -144,6 +144,10 @@ header nav ul.navigation {
     li.active > a {
         background-color: #d2d2d2;
     }
+
+    & > li.active > a {
+        background-color: white;
+    }
 }
 
 header nav > ul > li > a {
