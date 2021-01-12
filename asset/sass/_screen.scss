@@ -283,11 +283,11 @@ header nav ul {
     }
     
     .child-toggle {
-        color: $light;
+        color: black;
         width: 2 * $spacing-l;
         text-align: center;
-        background-color: #fff;
         border-left: 1px solid $light;
+        background-color:#f8fafc;
         appearance: none;
         
         &:before {
