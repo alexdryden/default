@@ -376,8 +376,13 @@ header nav ul li a {
 header nav {
     background-color:#192947;
 
-    ul a {
-        color:white!important
+    ul {
+        a {
+            color: white !important
+        }
+        li {
+            padding: 7px 0;
+        }
     }
 }
 
