@@ -198,7 +198,7 @@ header h1 {
 header nav {
     position: relative;
     padding: 0;
-    background-color:#192947;
+    background-color: #f8fafc;
 }
 
 header nav.closed ul {
@@ -241,7 +241,7 @@ header nav ul {
         display: inline-block;
         width: 100%;
         padding: $spacing-s;
-        color:white!important
+        color:black !important
     }
 
     a:hover {
