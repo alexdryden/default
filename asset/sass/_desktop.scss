@@ -45,7 +45,6 @@ footer {
 header nav {
     margin: 0 auto !important;
     position: static;
-    padding: 0 (2 * gutter());
     box-shadow: 0 0 10px 2px #858585;
 }
 
@@ -76,10 +75,13 @@ header nav > ul ul:hover > li {
 }
 
 header nav ul.navigation {
-    margin-left: -$spacing-s;
+    margin-left: auto;
+    margin-right:auto;
+    padding: 0 15px;
     position: static;
     display: flex;
     align-items: flex-end;
+    max-width: 1140px;
 
     li ul:before {
         display: none;
