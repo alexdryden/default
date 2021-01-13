@@ -286,10 +286,17 @@ header nav ul {
         border-left: 1px solid $light;
         background-color:#f8fafc;
         appearance: none;
-        
+
         &:before {
+            display: inline-block;
             font-family: "Font Awesome 5 Free";
             content: "\f105";
+            transition: transform .1s ease-in-out;
+        }
+    }
+    .child-toggle[aria-label="Collapse"] {
+        &:before {
+            transform: rotate(90deg);
         }
     }
 }
