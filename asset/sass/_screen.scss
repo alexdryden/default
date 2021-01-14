@@ -198,7 +198,7 @@ header h1 {
 header nav {
     position: relative;
     padding: 0;
-    background-color:#192947;
+    background-color: #f8fafc;
 }
 
 header nav.closed ul {
@@ -211,20 +211,16 @@ header nav:before {
     font-family: "Font Awesome 5 Free";
     content: "\f0c9";
     display: block;
-    width: 1.25 * $spacing-l;
-    height: 1.25 * $spacing-l;
+    width: 1.5 * $spacing-l;
+    height: 1.5 * $spacing-l;
     border: 1px solid $light;
     text-align: center;
     border-radius: 2px;
     position: absolute;
-    right: gutter();
-    top: -(1.625 * $spacing-l);
+    right: 0;
     cursor: pointer;
-    line-height: 1.25 * $base-line-height;
-}
-
-header nav.open {
-    margin: $spacing-m 0 -1px;
+    line-height: 1.5 * $base-line-height;
+    background-color:#E8E9EB;
 }
 
 header nav.open:before {
@@ -235,13 +231,14 @@ header nav ul {
     padding-left: 0;
     list-style: none;
     position: relative;
+    top:1.5 * $spacing-l;
     margin: 0 auto;
 
     a {
         display: inline-block;
         width: 100%;
         padding: $spacing-s;
-        color:white!important
+        color:black !important
     }
 
     a:hover {
@@ -252,7 +249,6 @@ header nav ul {
     li {
         border-top: 1px solid $light;
         position: relative;
-        padding: 7px 0;
         -webkit-transition: background-color .2s ease-out;
         -moz-transition: background-color .2s ease-out;
         -o-transition: background-color .2s ease-out;
@@ -267,9 +263,6 @@ header nav ul {
         background-color: #f8fafc;
     }
 
-    li:hover {
-        background-color: white;
-    }
 
     li.active a, li:hover a {
         color:black!important
@@ -284,16 +277,23 @@ header nav ul {
     }
     
     .child-toggle {
-        color: $light;
+        color: black;
         width: 2 * $spacing-l;
         text-align: center;
-        background-color: #fff;
         border-left: 1px solid $light;
+        background-color:#f8fafc;
         appearance: none;
-        
+
         &:before {
+            display: inline-block;
             font-family: "Font Awesome 5 Free";
             content: "\f105";
+            transition: transform .1s ease-in-out;
+        }
+    }
+    .child-toggle[aria-label="Collapse"] {
+        &:before {
+            transform: rotate(90deg);
         }
     }
 }
@@ -413,8 +413,8 @@ nav.pagination {
 /* @group ----- Header ----- */
 
 .site-title h1 {
-    font-size: 3 * $base-font-size;
-    line-height: $base-line-height;
+    font-size: 5rem;
+    line-height: 1;
     padding-right: $base-line-height;
     color:white;
     -webkit-transition: text-shadow 0.2s linear;
@@ -492,6 +492,7 @@ button.o-icon-search {
     width: 100%;
     border:none;
     padding: 0 5px;
+    font-size:1.5rem
 }
 
 #search form button[type="submit"] {
@@ -844,14 +845,12 @@ p {
     margin-top:3rem
 }
 
-.offset-md-1-5 {
-    margin-left: 12.5%
-}
-
 .table-of-contents-nav {
     position: -webkit-sticky;
     position: sticky;
     top:0;
+    margin-bottom:3rem;
+
     ul {
         list-style-type: none;
         padding-left:20px
@@ -883,7 +882,6 @@ p {
     font-size:1.6rem;
     align-self: flex-end;
     position: absolute;
-    right: 10px;
 }
 
 .banner-caption a:link, .banner-caption a:visited {
@@ -898,8 +896,28 @@ p {
     overflow: hidden;
     /*! autoprefixer: ignore next */
     -webkit-box-orient: vertical;
+    font-size: 1.75rem;
 }
 
 .xxMainLibxx-nav-button {
-    width: 40%;
+    width: 48%;
+}
+
+.col-md-6:not(:first-child) {
+    margin-top:3rem;
+}
+
+.card-block p {
+    font-size:1.4rem;
+    margin:auto;
+}
+
+.nav-card .col-auto, .nav-card .col {
+    padding-left:0;
+    padding-right:0;
+}
+
+.nav-card .row {
+    margin-left:0;
+    margin-right:0;
 }
