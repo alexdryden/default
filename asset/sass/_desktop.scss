@@ -45,7 +45,6 @@ footer {
 header nav {
     margin: 0 auto !important;
     position: static;
-    padding: 0 (2 * gutter());
     box-shadow: 0 0 10px 2px #858585;
 }
 
@@ -76,10 +75,13 @@ header nav > ul ul:hover > li {
 }
 
 header nav ul.navigation {
-    margin-left: -$spacing-s;
+    margin-left: auto;
+    margin-right:auto;
+    padding: 0 15px;
     position: static;
     display: flex;
     align-items: flex-end;
+    max-width: 1140px;
 
     li ul:before {
         display: none;
@@ -143,6 +145,10 @@ header nav ul.navigation {
 
     li.active > a {
         background-color: #d2d2d2;
+    }
+
+    & > li.active > a {
+        background-color: white;
     }
 }
 
@@ -330,4 +336,60 @@ header nav ul li a {
 .parent-link + ul {
     padding-left:2rem
 }
+
+.site-title h1 {
+    font-size:6rem;
+}
+
+.col-md-6:not(:first-child) {
+    margin-top:0
+}
+
+.card-block p {
+    font-size:2rem;
+}
+
+.xxMainLibxx-nav-title {
+    font-size: 2.25rem;
+}
+
+.xxMainLibxx-nav-button {
+    width: 40%;
+}
+
+.offset-md-1-5 {
+    margin-left: 12.5%
+}
+
+.nav-card .col-auto, .nav-card .col {
+    padding-left:15px;
+    padding-right:15px;
+}
+
+.nav-card .row {
+    margin-left:-15px;
+    margin-right:-15px;
+}
+
+.banner-caption {
+    right: 10px;
+}
+
+header nav {
+    background-color:#192947;
+
+    ul {
+        top:0;
+        a {
+            color: white !important
+        }
+        li {
+            padding: 7px 0;
+        }
+        li:hover {
+            background-color: white;
+        }
+    }
+}
+
 /* @end */
