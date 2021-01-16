@@ -1,3 +1,5 @@
+<div class="col-md-9 offset-md-1-5">
+    <div class="main-content-container">
 <?php
 $translate = $this->plugin('translate');
 $escape = $this->plugin('escapeHtml');
@@ -70,3 +72,5 @@ foreach ($items as $item):
 <?php echo ($itemSetShow) ? '</div>' : ''; ?>
 <?php $this->trigger('view.browse.after'); ?>
 <?php echo $this->pagination(); ?>
+    </div>
+</div>
