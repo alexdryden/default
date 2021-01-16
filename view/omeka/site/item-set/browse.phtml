@@ -4,7 +4,8 @@ $escape = $this->plugin('escapeHtml');
 
 $this->htmlElement('body')->appendAttribute('class', 'item-set resource browse');
 ?>
-
+<div class="col-md-9 offset-md-1-5">
+    <div class="main-content-container">
 <?php echo $this->pageTitle($translate('Item sets'), 2); ?>
 
 <?php echo $this->searchFilters(); ?>
@@ -34,3 +35,5 @@ foreach ($itemSets as $itemSet):
 </ul>
 <?php $this->trigger('view.browse.after'); ?>
 <?php echo $this->pagination(); ?>
+    </div>
+</div>
