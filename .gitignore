@@ -1,0 +1,10 @@
+/vendor/
+/node_modules/
+.sass-cache
+.DS_Store
+*.xml
+.php_cs.cache
+/.idea/
+.json
+composer.lock
+.php_cs.cache

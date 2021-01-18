@@ -1,0 +1,107 @@
+<?php
+$translate = $this->plugin('translate');
+$prevText = $translate('Previous Section: ');
+$nextText = $translate('Next Section: ');
+$default_thumb = $this->assetUrl('img/Default_square.png');
+?>
+
+<?php
+$directory = [];
+$nav = $page->site()->navigation();
+/*
+ * go through the navigation and for each page, make an key in the directory where the value is the oldest ancestor
+ * of that page.
+ */
+function fillDir ($chapter, $ancestor, $dir)
+{
+    foreach ($chapter['links'] as $section):
+        $dir[$section['data']['id']] = $ancestor;
+        if ($section['links']){
+            $dir = fillDir($section, $ancestor, $dir);
+        }
+    endforeach;
+    return $dir;
+}
+
+foreach ($nav as $chapter):
+    $directory[$chapter['data']['id']] = $chapter['data']['id'];
+    $directory = fillDir($chapter, $chapter['data']['id'], $directory);
+endforeach;
+
+/*
+ * Only show the next or prev page if that page and the current page share the same oldest ancestor, ie they are par of
+ * the same chapter/exhibit.
+ */
+if ($prevPage){
+    if ($directory[$prevPage->id()]!=$directory[$page->id()]){
+        $prevPage = null;
+    }
+}
+if ($nextPage){
+    if ($directory[$nextPage->id()]!=$directory[$page->id()]){
+        $nextPage = null;
+    }
+}
+
+?>
+<?php if ($prevPage || $nextPage): ?>
+
+    <div class="site-page-pagination">
+
+        <div class="container-fluid">
+            <div class="row justify-content-between">
+            <?php if ($prevPage){
+                $prevTitle = $prevPage->title();
+                $prevPageThumb = getThumbnail($prevPage, $default_thumb, 'square');?>
+                <div class="mr-auto xxMainLibxx-nav-button">
+                    <div class="card nav-card" >
+                    <div class="row">
+                        <div class="col-auto">
+                            <a  href="<?php echo $prevPage->siteUrl() ?>" class="stretched-link">
+                            <img src="<?php echo $prevPageThumb['url'] ?>"
+                                 class="img-fluid .img-thumbnail"
+                                 alt="<?php echo $prevPageThumb['alt'] ?>"
+                                 style="max-width: 100px"
+                            >
+                            </a>
+                        </div>
+                        <div class="col">
+                            <div class="card-block px-2">
+                                <a class="stretched-link" href="<?php echo $prevPage->siteUrl() ?>"><p class="pagination-link"><?php echo $prevText ?></p></a>
+                                <h4 class="card-title xxMainLibxx-nav-title"><?php echo $prevTitle ?></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            <?php }?>
+            <?php if ($nextPage){
+                $nextTitle = $nextPage->title();
+                $nextPageThumb = getThumbnail($nextPage, $default_thumb, 'square');?>
+                <div class="ml-auto xxMainLibxx-nav-button">
+                    <div class="card nav-card" >
+                        <div class="row">
+                            <div class="col-auto">
+                                <a  href="<?php echo $nextPage->siteUrl() ?>" class="stretched-link">
+                                    <img src="<?php echo $nextPageThumb['url'] ?>"
+                                         class="img-fluid .img-thumbnail"
+                                         alt="<?php echo $nextPageThumb['alt'] ?>"
+                                         style="max-width: 100px"
+                                    >
+                                </a>
+                            </div>
+                            <div class="col">
+                                <div class="card-block px-2">
+                                    <a class="stretched-link" href="<?php echo $nextPage->siteUrl() ?>"><p class="pagination-link"><?php echo $nextText ?></p></a>
+                                        <h4 class="card-title xxMainLibxx-nav-title"><?php echo $nextTitle ?></h4>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div>
+            <?php }?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
