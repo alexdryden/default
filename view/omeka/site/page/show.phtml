@@ -70,9 +70,9 @@ function getThumbnail($page, $default, $size){
                 $media = false;
                 foreach ($block->attachments() as $attachment):
                     if($attachment->media()){
-                        $media = $block->attachments()[0]->media();
-                    } elseif ($block->attachments()[0]->item()->primaryMedia()){
-                        $media = $block->attachments()[0]->item()->primaryMedia();
+                        $media = $attachment->media();
+                    } elseif ($attachment->item()->primaryMedia()){
+                        $media = $attachment->item()->primaryMedia();
                     }
                     if ($media){
                         $url = $media->thumbnailUrl($size);
@@ -83,11 +83,10 @@ function getThumbnail($page, $default, $size){
                         } else {
                             $alt = 'Thumbnail preview for next page';
                         }
-                    break 2;
-                }
+                        break 2;
+                    }
                 endforeach;
             }
-
         }
     }
     return ['url' => $url, 'alt' => $alt];
