@@ -75,7 +75,7 @@ function getThumbnail($page, $default, $size){
                         $media = $attachment->item()->primaryMedia();
                     }
                     if ($media){
-                        $img = $media->thumbnailUrl($size);
+                        $url = $media->thumbnailUrl($size);
                         if (array_key_exists('o-module-alt-text:alt-text', $media->primaryMedia()->jsonSerialize())
                             && $media->primaryMedia()->jsonSerialize()['o-module-alt-text:alt-text']
                         ) {
